@@ -1,0 +1,27 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+body { padding: 10px; }
+.bottom{
+  border-bottom: 1px solid #0dbdff;
+  margin-bottom: 10px;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.display-flex{
+  display: flex;
+}
+
+ /* .content {
+    background-color: #AA0000;
+    display:grid;
+    grid-column: auto;
+  } */
+
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
