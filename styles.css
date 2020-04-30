@@ -1,0 +1,43 @@
+/* @import '~bootstrap/scss/bootstrap.scss'; */
+ 
+ @import '~@angular/material/prebuilt-themes/purple-green.css';
+ /*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; 
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css'; 
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+ */
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
+body { 
+  padding: 10px; 
+  background-color: black;
+}
+.bottom{
+  border-bottom: 1px solid #0dbdff;
+  margin-bottom: 10px;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+.display-flex{
+  display: flex;
+}
+.mat-input-element,.mat-option{
+  color:white !important;
+  caret-color: #0dbdff !important;
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+  color: white;
+}
+
+ /* .content {
+    background-color: #AA0000;
+    display:grid;
+    grid-column: auto;
+  } */
+
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
