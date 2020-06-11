@@ -1,201 +1,305 @@
-import { Component } from "@angular/core";
-import { FormGroup } from "@angular/forms";
-import { FormlyFormOptions, FormlyFieldConfig } from "@ngx-formly/core";
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   today = new Date();
   form = new FormGroup({});
-  model: any = {};
+  model: any = {
+    investments: [
+      {
+        investmentName: 'project1',
+        investmentDate: '2020-10-03',
+        stockIdentifier: 1,
+      },
+      {
+        investmentName: 'project2',
+        investmentDate: '2020-10-03',
+        stockIdentifier: 2,
+      }
+    ],
+  };
   options: FormlyFormOptions = {};
   pagefields: FormlyFieldConfig[] = [
     {
-      key: "Select Page",
-      type: "select",
+      key: 'Select1',
+      type: 'select',
       templateOptions: {
-        label: "Select Page",
-        required: true,
-        class: "right",
-        options: [{ value: 1, label: "Voyager - eDealer spreads" }]
-      }
-    }
+        label: 'Selectpage',
+        // placeholder: 'Placeholder',
+        // required: true,
+        class: 'right',
+        options: [
+          { value: 1, label: 'Voyager - eDealer spreads' },
+
+        ],
+      },
+    },
   ];
   fields: FormlyFieldConfig[] = [
     {
-      fieldGroupClassName: "display-flex",
+      fieldGroupClassName: 'display-flex',
       fieldGroup: [
+        // {
+        //   template: '<hr/><div><strong>1st row:</strong></div>',
+        // },
         {
-          className: "col-sm-4",
-          key: "Source System",
-          type: "select",
+          className: 'col-sm-4',
+          key: 'Source system',
+          type: 'select',
           templateOptions: {
-            label: "Source System",
-            required: true,
-            options: [
-              { value: 1, label: "Option 1" },
-              { value: 2, label: "Option 2" },
-              { value: 3, label: "Option 3" },
-              { value: 4, label: "Option 4" }
-            ]
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "Sub Source System",
-          type: "select",
-          templateOptions: {
-            label: "Sub Source System",
-            options: [
-              { value: 1, label: "Option 1" },
-              { value: 2, label: "Option 2" },
-              { value: 3, label: "Option 3" },
-              { value: 4, label: "Option 4" }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      fieldGroupClassName: "display-flex",
-      fieldGroup: [
-        {
-          className: "col-sm-4",
-          key: "Branch",
-          type: "input",
-          templateOptions: {
-            label: "Branch",
-            required: true,
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "Base Number",
-          type: "input",
-          templateOptions: {
-            label: "Base Number",
-            required: true,
-          }
-        }
-      ]
-    },
-    {
-      fieldGroupClassName: "display-flex",
-      fieldGroup: [
-        {
-          className: "col-sm-4",
-          key: "AsOf Date",
-          type: "datepicker",
-          templateOptions: {
-            label: "AsOf Date"
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "Value Date",
-          type: "datepicker",
-          templateOptions: {
-            label: "Value Date",
-            // required: true,
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "Tenor",
-          type: "select",
-          templateOptions: {
-            label: "Tenor",
+            label: 'Source system',
+            // placeholder: 'Placeholder',
             // required: true,
             options: [
-              { value: 1, label: "Option 1" },
-              { value: 2, label: "Option 2" },
-              { value: 3, label: "Option 3" },
-              { value: 4, label: "Option 4" }
-            ]
-          }
-        }
-      ]
+              { value: 1, label: 'Option 1' },
+              { value: 2, label: 'Option 2' },
+              { value: 3, label: 'Option 3' },
+              { value: 4, label: 'Option 4' },
+            ],
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'SubSource system',
+          type: 'select',
+          templateOptions: {
+            label: 'SubSource system',
+            // placeholder: 'Placeholder',
+            // required: true,
+            options: [
+              { value: 1, label: 'Option 1' },
+              { value: 2, label: 'Option 2' },
+              { value: 3, label: 'Option 3' },
+              { value: 4, label: 'Option 4' },
+            ],
+          },
+        },
+      ],
     },
     {
-      fieldGroupClassName: "display-flex",
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        // {
+        //   template: '<hr/><div><strong>2nd row:</strong></div>',
+        // },
+        {
+          className: 'col-sm-4',
+          key: 'Branch',
+          type: 'input',
+          templateOptions: {
+            label: 'Branch',
+            // placeholder: 'Placeholder',
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Base no',
+          type: 'input',
+          templateOptions: {
+            label: 'Base no',
+            // placeholder: 'Placeholder',
+          },
+        },
+      ],
+    },
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        // {
+        //   template: '<hr/><div><strong>3rd row:</strong></div>',
+        // },
+        {
+          className: 'col-sm-4',
+          key: 'asofDate',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'asofDate',
+            // placeholder: 'Placeholder',
+          },
+          expressionProperties: {
+            'templateOptions.min': `formState.limitDate ? ${this.today} : null`
+          }
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Valuedate',
+          type: 'datepicker',
+          templateOptions: {
+            label: 'Valuedate',
+            // placeholder: 'Placeholder',
+          },
+          expressionProperties: {
+            'templateOptions.min': `formState.limitDate ? ${this.today} : null`
+          }
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Tenor',
+          type: 'select',
+          templateOptions: {
+            label: 'Tenor',
+            // placeholder: 'Placeholder',
+            // required: true,
+            options: [
+              { value: 1, label: 'Option 1' },
+              { value: 2, label: 'Option 2' },
+              { value: 3, label: 'Option 3' },
+              { value: 4, label: 'Option 4' },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        // {
+        //   template: '<hr/><div><strong>4th row:</strong></div>',
+        // },
+        {
+          className: 'col-sm-4',
+          key: 'BuyCCY',
+          type: 'select',
+          templateOptions: {
+            label: 'BuyCCY',
+            // placeholder: 'Placeholder',
+            // required: true,
+            options: [
+              { value: 1, label: 'USD' },
+              { value: 2, label: 'INR' },
+              { value: 3, label: 'EUR' },
+            ],
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'SellCCY',
+          type: 'select',
+          templateOptions: {
+            label: 'SellCCY',
+            // placeholder: 'Placeholder',
+            // required: true,
+            options: [
+              { value: 1, label: 'USD' },
+              { value: 2, label: 'INR' },
+              { value: 3, label: 'EUR' },
+            ],
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Buyorsell',
+          type: 'select',
+          templateOptions: {
+            label: 'Buyorsell',
+            options: [
+              { value: 1, label: 'Buy' },
+              { value: 2, label: 'Sell' },
+            ],
+            // description: 'Toggle Description',
+            // required: true,
+          },
+        },
+      ],
+    },
+    {
+      fieldGroupClassName: 'display-flex',
+      fieldGroup: [
+        // {
+        //   template: '<hr/><div><strong>5th row:</strong></div>',
+        // },
+        {
+          className: 'col-sm-4',
+          key: 'Amount',
+          type: 'input',
+          templateOptions: {
+            label: 'Amount',
+            // placeholder: 'Placeholder',
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Spotrate',
+          type: 'input',
+          templateOptions: {
+            label: 'Spotrate',
+            // placeholder: 'Placeholder',
+          },
+        },
+        {
+          className: 'col-sm-4',
+          key: 'Fwdpoints',
+          type: 'input',
+          templateOptions: {
+            label: 'Fwdpoints',
+            // placeholder: 'Placeholder',
+          },
+        },
+      ],
+    },
+    
+     {
+      fieldGroupClassName: 'display-table',
       fieldGroup: [
         {
-          className: "col-sm-4",
-          key: "BuyCCY",
-          type: "select",
-          templateOptions: {
-            label: "BuyCCY",
-            required: true,
-            options: [
-              { value: 1, label: "USD" },
-              { value: 2, label: "INR" },
-              { value: 3, label: "EUR" }
-            ]
-          }
+      key: 'investments',
+      type: 'grid',
+      className: 'ag-theme-balham',
+      templateOptions: {
+        height: '200px',
+        gridOptions: {
+          rowHeight: 42,
+          columnDefs: [
+            {
+              headerName: 'Name of Investment',
+              field: 'investmentName',
+              sortable: true,
+              width: 350,
+            },
+            {
+              headerName: 'Date of Investment',
+              field: 'investmentDate',
+              sortable: true,
+              width: 350,
+            }
+          ],
         },
-        {
-          className: "col-sm-4",
-          key: "SellCCY",
-          type: "select",
-          templateOptions: {
-            label: "SellCCY",
-            required: true,
-            options: [
-              { value: 1, label: "USD" },
-              { value: 2, label: "INR" },
-              { value: 3, label: "EUR" }
-            ]
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "BuyOrSell",
-          type: "select",
-          templateOptions: {
-            label: "BuyOrSell",
-            options: [{ value: 1, label: "Buy" }, { value: 2, label: "Sell" }],
-            required: true,
-          }
-        }
-      ]
+      },
+      fieldArray: {
+        fieldGroup: [
+          {
+            type: 'input',
+            key: 'investmentName',
+            templateOptions: {
+              required: true,
+            },
+          },
+          {
+            type: 'input',
+            key: 'investmentDate',
+            templateOptions: {
+              type: 'date',
+            },
+          },
+          {
+            type: 'input',
+            key: 'stockIdentifier',
+            templateOptions: {
+              label: 'Stock Identifier:',
+            },
+          },
+        ],
+      },
     },
-    {
-      fieldGroupClassName: "display-flex",
-      fieldGroup: [
-        {
-          className: "col-sm-4",
-          key: "Amount",
-          type: "input",
-          templateOptions: {
-            label: "Amount",
-            required: true,
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "SpotRate",
-          type: "input",
-          templateOptions: {
-            label: "SpotRate"
-          }
-        },
-        {
-          className: "col-sm-4",
-          key: "FwdPoints",
-          type: "input",
-          templateOptions: {
-            label: "FwdPoints"
-          }
-        }
       ]
-    },
-    {
-      fieldGroupClassName: "display-table",
-      fieldGroup: []
-    }
+     }
   ];
 
   submit() {
@@ -204,36 +308,23 @@ export class AppComponent {
     }
   }
 
-  columnDefs = [
-    {
-      field: "SpreadType",
-      width: 150,
-      suppressSizeToFit: true,
-      headerTooltip: "SpreadType"
-    },
-    { field: "Spreadpercentspot", headerTooltip: "Spreadpercentspot" },
-    { field: "SpreadpercentFWD", headerTooltip: "SpreadpercentFWD" },
-    { field: "Dealrate", headerTooltip: "Dealrate" },
-    { field: "Spotdealrate", headerTooltip: "Spotdealrate" },
-    { field: "Commision", headerTooltip: "Commision" },
-    { field: "Spotspread", headerTooltip: "Spotspread" },
-    { field: "FWDspread", headerTooltip: "FWDspread" },
-    { field: "Buyamount", headerTooltip: "Buyamount" },
-    { field: "Sellamount", headerTooltip: "Sellamount" }
+    columnDefs = [
+    { field: 'SpreadType', width: 150, suppressSizeToFit: true, headerTooltip: 'SpreadType', },
+    { field: 'Spreadpercentspot', headerTooltip: 'Spreadpercentspot' },
+    { field: 'SpreadpercentFWD', headerTooltip: 'SpreadpercentFWD' },
+    { field: 'Dealrate', headerTooltip: 'Dealrate' },
+    { field: 'Spotdealrate', headerTooltip: 'Spotdealrate' },
+    { field: 'Commision', headerTooltip: 'Commision' },
+    { field: 'Spotspread', headerTooltip: 'Spotspread' },
+    { field: 'FWDspread', headerTooltip: 'FWDspread' },
+    { field: 'Buyamount', headerTooltip: 'Buyamount' },
+    { field: 'Sellamount', headerTooltip: 'Sellamount' }
   ];
 
   rowData = [
     {
-      SpreadType: "Percentage",
-      Spreadpercentspot: "1.4",
-      SpreadpercentFWD: "2.1",
-      Dealrate: "1.34",
-      Spotdealrate: "1.43",
-      Commision: "0.003",
-      Spotspread: "1.32",
-      FWDspread: "1.23",
-      Buyamount: "1000",
-      Sellamount: "1100"
+      SpreadType: 'Percentage', Spreadpercentspot: '1.4', SpreadpercentFWD: '2.1', Dealrate: '1.34', Spotdealrate: '1.43',
+      Commision: '0.003', Spotspread: '1.32', FWDspread: '1.23', Buyamount: '1000', Sellamount: '1100'
     }
   ];
 
